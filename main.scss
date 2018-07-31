@@ -1,5 +1,7 @@
+$break-width: 768px;
+
 @mixin large() {
-  @media (min-width: 832px) {
+  @media (min-width: ($break-width + 1px)) {
     @content;
   }
 }
@@ -11,38 +13,35 @@
 body {
   margin: 0;
   font-size: 16px;
+  line-height: 1.5;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-weight: 300;
   color: #444549;
-}
-
-.backdrop {
-  min-height: 100%;
-  background: no-repeat center url('./assets/alex.jpg');
-  background-size: cover;
-  position: fixed;
-  $blur-radius: 10px;
-  top: -2 * $blur-radius;
-  left: -2 * $blur-radius;
-  width: calc(100% + #{4 * $blur-radius});
-  height: calc(100% + #{4 * $blur-radius});
-  filter: blur($blur-radius) opacity(0.8);
-  z-index: 1;
+  background: #F5F9FD;
 }
 
 .card {
-  position: relative;
-  margin: 2rem auto;
-  z-index: 2;
+  margin: 0rem auto;
+  max-width: $break-width;
+  padding: 2rem;
+  min-height: 100vh;
+  @include large {
+    margin: {
+      top: 4rem;
+      bottom: 4rem;
+    }
+    padding: {
+      top: 4rem;
+      bottom: 4rem;
+    }
+    min-height: 0;
+  }
   background: #fff;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  padding: 1rem 0 0;
+  
 
-  max-width: calc(100% - #{4rem});
-  @include large {
-    max-width: 800px;
-    padding-top: 2rem;
-  }
+  text-align: center;
 }
 
 %card-text {
@@ -58,22 +57,44 @@ body {
 
 .heading {
   @extend %card-text;
-  font-family: Constantia, 'Lucida Bright', Lucidabright, 'Lucida Serif', Lucida,
-    'DejaVu Serif', 'Bitstream Vera Serif', 'Liberation Serif', Georgia, serif;
-  font-size: 4rem;
+  font-size: 3rem;
+  font-weight: 300;
 }
 
-.info-section {
-  @extend %card-text;
-  color: #558b2f;
-  font-size: 1.5rem;
-  font-weight: 500;
+.figure-main {
+  background: url("./assets/alex.jpg") no-repeat center #ccc;
+  background-size: cover;
+  margin: 0 auto 2rem;
+  $size: 20rem;
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  display: block;
 }
 
-.info-item {
+.calendar-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #56AFF3, #3087CE);
+  padding: 0 1.5rem;
+  height: 3rem;
+  border-radius: 1.5rem;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  svg {
+    margin-right: 0.25rem;
+  }
+
+  .cal {
+    fill: #fff;
+  }
 }
 
-.image {
-  width: 100%;
-  height: auto;
+.info {
+  font-size: 1.75rem;
+  max-width: 420px;
+  margin: 0 auto 1em;
 }
