@@ -1,4 +1,6 @@
 $break-width: 768px;
+$colour-blue-dark: #3087CE;
+$colour-blue-light: #56AFF3;
 
 @mixin large() {
   @media (min-width: ($break-width + 1px)) {
@@ -38,7 +40,7 @@ body {
     min-height: 0;
   }
   background: #fff;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 0 4rem $colour-blue-light;
   
 
   text-align: center;
@@ -76,7 +78,7 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to right, #56AFF3, #3087CE);
+  background: linear-gradient(to right, $colour-blue-light, $colour-blue-dark);
   padding: 0 1.5rem;
   height: 3rem;
   border-radius: 1.5rem;
